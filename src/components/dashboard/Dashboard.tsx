@@ -171,15 +171,25 @@ const Dashboard = ({
   };
 
   // Handle share completion
-  const handleShareComplete = (emails: string[], options: any) => {
-    // In a real app, this would send the file to the specified emails with the selected options
-    console.log(`Sharing file ${sharingFile?.name} with:`, emails);
-    console.log("Share options:", options);
+  const handleShareComplete = async (emails: string[], options: any) => {
+    if (!sharingFile) return;
 
-    // Show a toast or notification that the file was shared successfully
-    alert(`File shared with ${emails.length} recipients`);
+    try {
+      // In a real app with Supabase connected, this would call the API
+      // import { shareFile } from "@/lib/api";
+      // await shareFile(sharingFile.id, emails, options);
 
-    setSharingFile(null);
+      console.log(`Sharing file ${sharingFile.name} with:`, emails);
+      console.log("Share options:", options);
+
+      // Show a toast or notification that the file was shared successfully
+      alert(`File shared with ${emails.length} recipients`);
+    } catch (error) {
+      console.error("Error sharing file:", error);
+      alert("Failed to share file. Please try again.");
+    } finally {
+      setSharingFile(null);
+    }
   };
 
   // Enhanced security measures when dashboard mounts

@@ -1,30 +1,68 @@
-# React + TypeScript + Vite
+# SecureShare - Protected File Sharing Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+SecureShare is a secure file sharing application that allows users to upload and share files with enhanced security features to prevent unauthorized access, copying, or downloading.
 
-Currently, two official plugins are available:
+## Features
+- **Secure Authentication**: Email-based authentication with auto-generated passwords
+- **File Management**: Upload, view, and share files securely
+- **Security Features**: Watermarking, screenshot prevention, and content protection
+- **Sharing Controls**: Expiry dates, password protection, and download prevention
+- **User Interface**: Clean dashboard with grid/list views and dark/light mode
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
+- Node.js (v16 or later)
+- npm or yarn
+- Supabase account for backend services
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Installation
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/secureshare.git
+cd secureshare
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Install dependencies
+```bash
+npm install
+```
+
+3. Set up environment variables
+```bash
+cp .env.example .env
+```
+Edit the `.env` file with your Supabase credentials and other configuration.
+
+4. Start the development server
+```bash
+npm run dev
+```
+
+## Deployment
+
+### Supabase Setup
+1. Create a new Supabase project
+2. Run the SQL migrations in `supabase/migrations/`
+3. Create a storage bucket named `secure-files`
+4. Set up appropriate storage policies
+
+### Frontend Deployment
+The application can be deployed to any static hosting service:
+
+```bash
+npm run build
+```
+
+Then deploy the contents of the `dist` folder to your hosting provider.
+
+## Security Considerations
+- Client-side security measures (like screenshot prevention) are best-effort and can be circumvented
+- For maximum security, implement server-side rendering and DRM solutions
+- Always use HTTPS in production
+- Implement rate limiting to prevent brute force attacks
+
+## License
+MIT

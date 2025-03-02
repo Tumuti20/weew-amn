@@ -273,7 +273,7 @@ const ShareModal: React.FC<ShareModalProps> = ({
           </Button>
           <Button
             onClick={handleShare}
-            disabled={emails.length === 0 && Tabs}
+            disabled={emails.length === 0 && !copied}
             className="gap-2"
           >
             <Send className="h-4 w-4" />
