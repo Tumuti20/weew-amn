@@ -144,6 +144,8 @@ const UploadModal: React.FC<UploadModalProps> = ({
                 multiple
                 className="hidden"
                 onChange={handleFileInput}
+                directory=""
+                webkitdirectory=""
               />
             </label>
           </div>
